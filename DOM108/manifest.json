@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "ez-hack for myworks",
+    "version": "2.0",
+    "description": "Automated Attendance for Wolken",
+    "permissions": ["menus", "contextMenus", "tabs"],
+    "background": {
+    "scripts": ["background.js"]
+    },
+    "icons": {
+        "48": "icons/broadcom-seeklogo.svg"
+    },
+
+    "action": {
+        "default_icon": "icons/broadcom-seeklogo.svg"
+    },
+
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": ["*://broadcomcms-software-agent.wolkenservicedesk.com/wolken/esd/*"],
+            "all_frames": true,
+            "js": ["content.js"]
+        }
+    ]
+
+    
+}
