@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "toggleState": {
+      "type": "boolean",
+      "description": "The state of the toggle switch"
+    }
+  }
+}

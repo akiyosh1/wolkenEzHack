@@ -1,28 +1,34 @@
 {
-    "manifest_version": 3,
-    "name": "ez-hack for myworks",
-    "version": "2.0",
-    "description": "Automated Attendance for Wolken",
-    "permissions": ["menus", "contextMenus", "tabs"],
-    "background": {
-    "scripts": ["background.js"]
-    },
-    "icons": {
-        "48": "icons/broadcom-seeklogo.svg"
-    },
+  "manifest_version": 3,
+  "name": "Toggle Switch",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab"],
 
-    "action": {
-        "default_icon": "icons/broadcom-seeklogo.svg"
+  "icons": {
+    "16": "icons/broadcom-seeklogo16.png",
+    "48": "icons/broadcom-seeklogo48.png",
+    "128": "icons/broadcom-seeklogo128.png"   
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/broadcom-seeklogo16.png",
+      "48": "icons/broadcom-seeklogo48.png",
+      "128": "icons/broadcom-seeklogo128.png"           
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://broadcomcms-software-agent.wolkenservicedesk.com/wolken/*"],
+      "js": ["utils.js"],
+      "run_at": "document_end"
     },
-
-    "content_scripts": [
-        {
-            "run_at": "document_end",
-            "matches": ["*://broadcomcms-software-agent.wolkenservicedesk.com/wolken/esd/*"],
-            "all_frames": true,
-            "js": ["content.js"]
-        }
-    ]
-
-    
+    {
+      "matches": ["https://broadcomcms-software-agent.wolkenservicedesk.com/wolken/*"],
+      "js": ["autocheckin.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }
